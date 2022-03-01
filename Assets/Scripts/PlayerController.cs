@@ -2,24 +2,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    CharacterController _characterController;
     [SerializeField] private float speed;
-    private Rigidbody movement;
 
     private void Start()
     {
-        movement = GetComponent<Rigidbody>();
+        _characterController = GetComponent<CharacterController>();
     }
-    
+
     private void FixedUpdate()
     {
         MovementLogic();
     }
-    
+
     private void MovementLogic()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector3 move = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        movement.AddForce(move);
+        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        _characterController.Move(move * Time.deltaTime * speed);
     }
 }
