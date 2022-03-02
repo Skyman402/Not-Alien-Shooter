@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RotateController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float offset;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 diference = Camera.main.ScreenToViewportPoint(Input.mousePosition) - transform.position;
+            float rotateY = Mathf.Atan2(diference.x, diference.z) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, rotateY + offset, 0f);
+        }
     }
 }
