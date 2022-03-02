@@ -2,15 +2,31 @@ using UnityEngine;
 
 public class RotateController : MonoBehaviour
 {
-    [SerializeField] private float offset;
+    private Camera _camera;
+    private Transform _transform;
 
-    void Update()
+    private void Start()
+    {
+        _camera = Camera.main;
+        _transform = transform;
+    }
+
+    private void Update()
     {
         if (Input.GetMouseButton(0))
         {
-            Vector3 diference = Camera.main.ScreenToViewportPoint(Input.mousePosition) - transform.position;
-            float rotateY = Mathf.Atan2(diference.x, diference.z) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, rotateY + offset, 0f);
+            Rotate();
+        }
+    }
+
+    private void Rotate()
+    {
+        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 1000f))
+        {
+            var hitPoint = new Vector3(hit.point.x, _transform.position.y, hit.point.z);
+            _transform.forward = (hitPoint-transform.position).normalized;
         }
     }
 }
