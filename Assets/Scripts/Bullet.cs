@@ -1,13 +1,17 @@
+using System.Collections;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public float damage = 20;
+
     private Rigidbody _rigidbody;
     [SerializeField] private float _bulletSpeed;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        StartCoroutine(DestroyAfterDelay());
     }
     private void FixedUpdate()
     {
@@ -18,5 +22,12 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
+    private IEnumerator DestroyAfterDelay()
+    {
+        yield return new WaitForSeconds(5);
+        if (this != null)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
