@@ -1052,7 +1052,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 66561576fb3726f4f95ffed632abc318, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1336,6 +1336,7 @@ GameObject:
   - component: {fileID: 1733328659}
   - component: {fileID: 1733328662}
   - component: {fileID: 1733328661}
+  - component: {fileID: 1733328663}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1376,7 +1377,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d29b316f85bdd3947bb4af690db2635b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1436,8 +1437,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   armor: 0
-  target: {fileID: 1383997404}
-  EnemyDamage: 20
 --- !u!54 &1733328659
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1450,7 +1449,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
@@ -1482,7 +1481,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1490,6 +1489,21 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1733328663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733328653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 300f05865a95bf04fb4ae6935840c263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackRadius: 1.5
+  _target: {fileID: 1383997410}
+  _enemyDamage: 10
 --- !u!1 &1970434444
 GameObject:
   m_ObjectHideFlags: 0
@@ -1579,7 +1593,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 657c332acc9db6c43848573c623008f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

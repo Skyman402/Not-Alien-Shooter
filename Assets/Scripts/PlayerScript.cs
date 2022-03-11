@@ -10,12 +10,13 @@ public class PlayerScript : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
     }
-
-    private void OnCollisionEnter(Collision collision)
+    
+    public void TakeDamdage(float amount)
     {
-        _playerHealth = _playerHealth - collision.collider.GetComponent<Enemy>().EnemyDamage;
+        _playerHealth = _playerHealth - amount;
         if (_playerHealth <= 0)
             Destroy(gameObject);
     }
 }
+
 
