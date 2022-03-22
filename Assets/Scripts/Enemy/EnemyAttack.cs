@@ -11,6 +11,11 @@ public class EnemyAttack : MonoBehaviour
 
     private bool _isCooldown;
 
+    private void Start()
+    {
+        _target = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+    }
+
     private void Update()
     {
         if (_target == null)

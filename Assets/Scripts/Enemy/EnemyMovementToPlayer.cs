@@ -8,6 +8,7 @@ public class EnemyMovementToPlayer : MonoBehaviour
 
     private void Start()
     {
+        _target = GameObject.FindGameObjectWithTag("Player").transform;
         _agent = GetComponent<NavMeshAgent>();
     }
 
