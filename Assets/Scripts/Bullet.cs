@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
     }
     private IEnumerator DestroyAfterDelay()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4);
         if (this != null)
         {
             Destroy(gameObject);
